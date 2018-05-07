@@ -1663,7 +1663,7 @@ main() {
                                       idmap_nss'''))
 
     default_shared_modules.extend(TO_LIST('''
-                                      vfs_recycle vfs_audit vfs_extd_audit vfs_full_audit vfs_netatalk
+                                      vfs_recycle vfs_audit vfs_notify_redis vfs_extd_audit vfs_full_audit vfs_netatalk
                                       vfs_fake_perms vfs_default_quota vfs_readonly vfs_cap
                                       vfs_expand_msdfs vfs_shadow_copy vfs_shadow_copy2
                                       vfs_readahead vfs_xattr_tdb
@@ -1855,4 +1855,5 @@ main() {
         Logs.info("%s: %s" % (static_env, ','.join(conf.env[static_env])))
         Logs.info("%s: %s" % (shared_env, ','.join(conf.env[shared_env])))
 
+    conf.CHECK_HEADERS('hiredis.h')
     conf.SAMBA_CONFIG_H('include/config.h')
