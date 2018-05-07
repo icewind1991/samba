@@ -139,3 +139,8 @@ if (conf.CONFIG_SET('HAVE_LTTNG_TRACEF_H') and
 conf.env['CPPPATH_GPFS'] = Options.options.gpfs_headers_dir
 if conf.CHECK_HEADERS('gpfs.h', False, False, "gpfs"):
     conf.DEFINE('HAVE_GPFS', '1')
+
+conf.env['CPPPATH_HIREDIS'] = Options.options.hiredis_headers_dir
+if conf.CHECK_HEADERS('hiredis.h', False, False, "hiredis"):
+    conf.CHECK_LIB('hiredis', shlib=True)
+    conf.DEFINE('HAVE_HIREDIS', '1')
